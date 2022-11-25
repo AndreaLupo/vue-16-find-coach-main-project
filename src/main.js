@@ -5,6 +5,6 @@ import App from './App.vue';
 
 const app = createApp(App);
 
-app.user(router);
+app.use(router);
 
 app.mount('#app');

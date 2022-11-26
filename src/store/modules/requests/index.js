@@ -3,7 +3,12 @@ import actions from './actions';
 import getters from './getters';
 
 export default {
-    state() {},
+    namespaced: true,
+    state() {
+        return {
+            requests: []
+        }
+    },
     mutations,
     actions,
     getters

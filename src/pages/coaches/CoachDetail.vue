@@ -9,7 +9,7 @@
     <base-card>
       <header>
         <h2>Interested? Reach out now!</h2>
-        <base-button :link="contactLink">Contact</base-button>
+        <base-button link :to="contactLink">Contact</base-button>
       </header>
       <router-view></router-view>
     </base-card>
@@ -45,7 +45,7 @@ export default {
     rate() {
       return this.selectedCoach.hourlyRate;
     },
-    descriptinn() {
+    description() {
       return this.selectedCoach.description;
     }
   },

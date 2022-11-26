@@ -20,17 +20,19 @@ export default {
     props: ['id', 'firstName', 'lastName', 'rate', 'areas'],
     computed: {
         fullName() {
-            return this.firstName + ' ' + this.lastName;
+          return this.firstName + ' ' + this.lastName;
         },
         /**
          * this.$route.path allow to avoid changes here if we change the route in the CoachesList component.
          */
         coachContactLink() {
-            return this.$route.path + '/coaches/' + this.id + '/contact';
+            //return this.$route.path + '/coaches/' + this.id + '/contact';
+          return '/coaches/' + this.id + '/contact';
         },
         coachDetailsLink() {
-            return this.$route.path + '/coaches/' + this.id;
-        }
+          //return this.$route.path + '/coaches/' + this.id;
+          return '/coaches/' + this.id;
+         }
     }
 }
 </script>

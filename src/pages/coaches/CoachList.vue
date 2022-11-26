@@ -1,30 +1,32 @@
 <template>
-    <!-- !!error convert a truthy string (like 'true') in a real boolean value -->
-    <base-dialog :show="!!error" title="An error occured" @close="handleError">
-        <p>{{ error }}</p>
-    </base-dialog>
-    <section>
-        <coach-filter @change-filter="setFilters"></coach-filter>
-    </section>
-    <section>
-        <base-card>
-            <div class="controls">
-                <base-button @click="loadCoaches(true)">Refresh</base-button>
-                <!-- automatically set to true-->
-                <base-button link to="/register" v-if="!isCoach && !isLoading">Register as Coach</base-button>
-            </div>
-            <div v-if="isLoading">
-                <base-spinner></base-spinner>
-            </div>
-            <ul v-else-if="hasCoaches">
-                <coach-item v-for="coach in filteredCoaches" :key="coach.id" :id="coach.id"
-                    :first-name="coach.firstName" :last-name="coach.lastName" :rate="coach.hourlyRate"
-                    :areas="coach.areas">
-                </coach-item>
-            </ul>
-            <h3 v-else>No coaches found</h3>
-        </base-card>
-    </section>
+    <div>
+        <!-- !!error convert a truthy string (like 'true') in a real boolean value -->
+        <base-dialog :show="!!error" title="An error occured" @close="handleError">
+            <p>{{ error }}</p>
+        </base-dialog>
+        <section>
+            <coach-filter @change-filter="setFilters"></coach-filter>
+        </section>
+        <section>
+            <base-card>
+                <div class="controls">
+                    <base-button @click="loadCoaches(true)">Refresh</base-button>
+                    <!-- automatically set to true-->
+                    <base-button link to="/register" v-if="!isCoach && !isLoading">Register as Coach</base-button>
+                </div>
+                <div v-if="isLoading">
+                    <base-spinner></base-spinner>
+                </div>
+                <ul v-else-if="hasCoaches">
+                    <coach-item v-for="coach in filteredCoaches" :key="coach.id" :id="coach.id"
+                        :first-name="coach.firstName" :last-name="coach.lastName" :rate="coach.hourlyRate"
+                        :areas="coach.areas">
+                    </coach-item>
+                </ul>
+                <h3 v-else>No coaches found</h3>
+            </base-card>
+        </section>
+    </div>    
 </template>
 
 <script>

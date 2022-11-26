@@ -6,7 +6,7 @@
     </div>
     <div class="form-control">
         <label for="lastname">Lastname</label>
-        <input type="text" id="lastname" v-mode.triml="lastName"/>
+        <input type="text" id="lastname" v-model.trim="lastName"/>
     </div>
     <div class="form-control">
         <label for="description">Description</label>
@@ -37,6 +37,7 @@
 
 <script>
 export default {
+    emits: ['save-data'],
     data() {
         return {
             firstName: '',
@@ -55,7 +56,7 @@ export default {
                 rate: this.rate,
                 areas: this.areas
             }
-            console.log(formData);
+            this.$emit('save-data', formData);
         }
     }
 }

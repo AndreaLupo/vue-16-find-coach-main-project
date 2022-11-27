@@ -1,5 +1,7 @@
 let timer;
 
+import key from '/keys';
+
 export default {
     async login(context, payload) {
         return context.dispatch('auth', {
@@ -52,10 +54,10 @@ export default {
         const mode = payload.mode;
 
         // got from https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=***REMOVED***';
+        let url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key.apiKey}`;
         
         if(mode === 'signup') {
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=***REMOVED***';
+            url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key.apiKey}`;
         }
         const response = await fetch(url,
             {

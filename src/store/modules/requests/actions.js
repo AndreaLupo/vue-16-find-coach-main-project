@@ -4,7 +4,7 @@ export default {
             userEmail: payload.email,
             message: payload.message
         };
-        const response = await fetch(`https://vue-http-demo-2c8cb-default-rtdb.firebaseio.com/requests/${payload.coachId}.json`, {
+        const response = await fetch(`https://vue-coaches-5a209-default-rtdb.firebaseio.com/requests/${payload.coachId}.json`, {
             method: 'POST',
             body: JSON.stringify(newRequest)
         });
@@ -25,7 +25,7 @@ export default {
         const coachId = context.rootGetters.userId;
         const token = context.rootGetters.token;
 
-        const response = await fetch(`https://vue-http-demo-2c8cb-default-rtdb.firebaseio.com/requests/${coachId}.json?auth=${token}`);
+        const response = await fetch(`https://vue-coaches-5a209-default-rtdb.firebaseio.com/requests/${coachId}.json?auth=${token}`);
     
         const responseData = await response.json();
         

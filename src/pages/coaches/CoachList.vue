@@ -12,7 +12,8 @@
                 <div class="controls">
                     <base-button @click="loadCoaches(true)">Refresh</base-button>
                     <!-- automatically set to true-->
-                    <base-button link to="/register" v-if="!isCoach && !isLoading">Register as Coach</base-button>
+                    <base-button link to="/auth" v-if="!isLoggedIn">Login</base-button>
+                    <base-button link to="/register" v-if="showRegisterButton">Register as Coach</base-button>
                 </div>
                 <div v-if="isLoading">
                     <base-spinner></base-spinner>
@@ -51,6 +52,9 @@ export default {
         };
     },
     computed: {
+        isLoggedIn() {
+            return this.$store.getters.isAuthenticated;
+        },
         filteredCoaches() {
             const coaches = this.$store.getters['coaches/coaches'];
             return coaches.filter(coach => {
@@ -71,6 +75,9 @@ export default {
         },
         isCoach() {
             return this.$store.getters['coaches/isCoach'];
+        },
+        showRegisterButton() {
+            return this.isLoggedIn && !this.isCoach && !this.isLoading;
         }
     },
     created() {

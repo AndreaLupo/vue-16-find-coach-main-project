@@ -8,3 +8,4 @@ This project contains:
 - Redirect from protected pages if user is not login with navigation guards
 - Automatic login / logout with local storage (configured by router)
 - Call store's actions from another action (`store/modules/auth/actions.js`)
+- Asynchronous components (also in routing!)

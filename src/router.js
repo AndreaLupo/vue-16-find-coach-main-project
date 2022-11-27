@@ -30,6 +30,8 @@ const router = createRouter({
     ]
 });
 
+
+
 router.beforeEach(function(to, from, next) {
     // if route requires auth and user is not authenticated
     if(to.meta.requiresAuth && !store.getters.isAuthenticated) {
@@ -43,5 +45,8 @@ router.beforeEach(function(to, from, next) {
     }
 });
 
+
+// https://stackoverflow.com/questions/46359421/vuerouter-is-changing-the-route-even-before-calling-vue-beforecreate-function
+store.dispatch('tryAutoLogin');
 
 export default router;
